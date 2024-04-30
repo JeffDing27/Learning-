@@ -12,21 +12,24 @@ let subscribers = {
 };
 
 function createSubscriber(firstName, lastName, street1, street2, city, state) {
-  subscribers.firstName = firstName;
-  subscribers.lastName = lastName;
-  subscribers.street1 = street1;
-  subscribers.street2 = street2;
-  subscribers.city = city;
-  subscribers.state = state;
+  const subscribers = {
+    firstName,
+    lastName,
+    street1,
+    street2,
+    city,
+    state,
+  };
 
   if (subscribers.state === "Utah") {
     console.log("true");
   } else {
     console.log("false");
   }
+  return subscribers;
 }
 
-createSubscriber(
+const subscriber1 = createSubscriber(
   "Jeff",
   "Ding",
   "123 Main St",
@@ -36,7 +39,7 @@ createSubscriber(
   "84129",
   "123"
 );
-console.log(subscribers);
+console.log(subscriber1);
 
 function updateSubscripber(subscribers, newState) {
   subscribers.city = newState;
@@ -90,3 +93,5 @@ function sizeArray(subscribersArray) {
   console.log("size of the array:", subscribersArray.length);
 }
 sizeArray(subscribersArray);
+
+// Count how many of the subscribers have the city of Sandy
