@@ -1,4 +1,6 @@
-const subscribers = {
+//Step 1
+
+let subscribers = {
   firstName: "",
   lastName: "",
   street1: "",
@@ -43,22 +45,41 @@ function updateSubscripber(subscribers, newState) {
 const newState = "California";
 console.log(newState);
 
-let subscriber = [
-  //use brackets for array list
-  "Jeff",
-  "John",
-  "Jason",
-  "Sam",
-  "Clark",
-  "Jackson",
-  "Sarah",
-  "Molly",
-  "Adam",
-  "Levi",
-];
+//Step 2
 
-function subscriberInfo(subscriber) {
-  for (let i = 0; i < subscriber.length; i++) {
-    console.log(subscriber[i]); //allows to access each subscriber object in the array
+let subscribersArray = [
+  //use brackets for array list
+  { firstName: "Jeff", address: "Main St" },
+  { firstName: "John", address: "Main St" },
+  { firstName: "Jason", address: "Main St" },
+  { firstName: "Sam", address: "Main St" },
+  { firstName: "Clark", address: "Main St" },
+  { firstName: "Jackson", address: "Main St" },
+  { firstName: "Sarah", address: "Main St" },
+  { firstName: "Molly", address: "Main St" },
+  { firstName: "Adam", address: "Main St" },
+  { firstName: "Levi", address: "Main St" },
+];
+//the parameters enclosed in the parentheses represent the input values that the function expects to receive when it is called.
+function subscriberInfo(subscribersArray) {
+  for (let i = 0; i < subscribersArray.length; i++) {
+    // console.log(subscriber[i]); //allows to access each subscriber object in the array
+    const subscriber = subscribersArray[i];
+    console.log(`Name: ${subscriber.firstName}`);
+    console.log(`Address: ${subscriber.address}`);
   }
 }
+// Call the subscriberInfo function with subscribersArray as argument
+subscriberInfo(subscribersArray);
+
+function updateArray(subscribersArray, firstName, address) {
+  const newSubscriber = {
+    firstName: firstName,
+    address: address,
+  };
+  subscribersArray.push(newSubscriber);
+}
+
+updateArray(subscribersArray, "Rosie", "123 Main");
+
+console.log(subscribersArray);
