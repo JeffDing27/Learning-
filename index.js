@@ -49,16 +49,16 @@ console.log(newState);
 
 let subscribersArray = [
   //use brackets for array list
-  { firstName: "Jeff", address: "Main St" },
-  { firstName: "John", address: "Main St" },
-  { firstName: "Jason", address: "Main St" },
-  { firstName: "Sam", address: "Main St" },
-  { firstName: "Clark", address: "Main St" },
-  { firstName: "Jackson", address: "Main St" },
-  { firstName: "Sarah", address: "Main St" },
-  { firstName: "Molly", address: "Main St" },
-  { firstName: "Adam", address: "Main St" },
-  { firstName: "Levi", address: "Main St" },
+  { firstName: "Jeff", address: "Main St", city: "Provo" },
+  { firstName: "John", address: "Main St", city: "Taylorsville" },
+  { firstName: "Jason", address: "Main St", city: "West Valley" },
+  { firstName: "Sam", address: "Main St", city: "South Jordan" },
+  { firstName: "Clark", address: "Main St", city: "Riverton" },
+  { firstName: "Jackson", address: "Main St", city: "Sandy" },
+  { firstName: "Sarah", address: "Main St", city: "Draper" },
+  { firstName: "Molly", address: "Main St", city: "Highland" },
+  { firstName: "Adam", address: "Main St", city: "Orem" },
+  { firstName: "Levi", address: "Main St", city: "Lehi" },
 ];
 //the parameters enclosed in the parentheses represent the input values that the function expects to receive when it is called.
 function subscriberInfo(subscribersArray) {
@@ -72,14 +72,21 @@ function subscriberInfo(subscribersArray) {
 // Call the subscriberInfo function with subscribersArray as argument
 subscriberInfo(subscribersArray);
 
+//add a new subscriber function
 function updateArray(subscribersArray, firstName, address) {
   const newSubscriber = {
     firstName: firstName,
     address: address,
   };
-  subscribersArray.push(newSubscriber);
+  subscribersArray.push(newSubscriber); //add a new subscriber to the existing array, subscribersArray.
 }
 
-updateArray(subscribersArray, "Rosie", "123 Main");
+updateArray(subscribersArray, "Rosie", "123 Main"); //
 
 console.log(subscribersArray);
+
+// log out the size of the array function
+function sizeArray(subscribersArray) {
+  console.log("size of the array:", subscribersArray.length);
+}
+sizeArray(subscribersArray);
