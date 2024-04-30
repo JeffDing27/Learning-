@@ -95,3 +95,14 @@ function sizeArray(subscribersArray) {
 sizeArray(subscribersArray);
 
 // Count how many of the subscribers have the city of Sandy
+function numberOfCity(subscribersArray, city) {
+  let count = 0;
+  for (let i = 0; i < subscribersArray.length; i++) {
+    if (subscribersArray[i].city === city) {
+      count++;
+    }
+  }
+  return count;
+}
+const sandyCount = numberOfCity(subscribersArray, "Sandy");
+console.log("Number of subscribers in Sandy: " + sandyCount + ".");
