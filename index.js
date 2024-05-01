@@ -52,16 +52,16 @@ console.log(newState);
 
 let subscribersArray = [
   //use brackets for array list
-  { firstName: "Jeff", address: "Main St", city: "Provo" },
-  { firstName: "John", address: "Main St", city: "Taylorsville" },
-  { firstName: "Jason", address: "Main St", city: "West Valley" },
-  { firstName: "Sam", address: "Main St", city: "South Jordan" },
-  { firstName: "Clark", address: "Main St", city: "Riverton" },
-  { firstName: "Jackson", address: "Main St", city: "Sandy" },
-  { firstName: "Sarah", address: "Main St", city: "Draper" },
-  { firstName: "Molly", address: "Main St", city: "Highland" },
-  { firstName: "Adam", address: "Main St", city: "Orem" },
-  { firstName: "Levi", address: "Main St", city: "Lehi" },
+  { firstName: "Jeff", address: "Main St", city: "Provo", ID: "145" },
+  { firstName: "John", address: "Main St", city: "Taylorsville", ID: "135" },
+  { firstName: "Jason", address: "Main St", city: "West Valley", ID: "456" },
+  { firstName: "Sam", address: "Main St", city: "South Jordan", ID: "897" },
+  { firstName: "Clark", address: "Main St", city: "Riverton", ID: "123" },
+  { firstName: "Jackson", address: "Main St", city: "Sandy", ID: "345" },
+  { firstName: "Sarah", address: "Main St", city: "Draper", ID: "998" },
+  { firstName: "Molly", address: "Main St", city: "Highland", ID: "767" },
+  { firstName: "Adam", address: "Main St", city: "Orem", ID: "490" },
+  { firstName: "Levi", address: "Main St", city: "Lehi", ID: "001" },
 ];
 //the parameters enclosed in the parentheses represent the input values that the function expects to receive when it is called.
 function subscriberInfo(subscribersArray) {
@@ -105,4 +105,18 @@ function numberOfCity(subscribersArray, city) {
   return count;
 }
 const sandyCount = numberOfCity(subscribersArray, "Sandy");
-console.log("Number of subscribers in Sandy: " + sandyCount + ".");
+console.log("Number of subscribers in Sandy: " + sandyCount);
+
+//Remove the subscriber in the array that has ID 123.
+function removeID(subscribersArray) {
+  return subscribersArray.ID !== "123";
+}
+console.log(subscribersArray.filter(removeID));
+// function removeID(subscribersArray, ID) {
+//   for (let i = 0; i < subscribersArray.length; i++) {
+//     if (subscribersArray[i].ID === ID) {
+//       subscribersArray.splice(i, 1);
+//     }
+//   }
+// }
+// removeID(subscribersArray, "123");
