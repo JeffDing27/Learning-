@@ -138,8 +138,10 @@ function addSubscription(subscribers, type, numberOfCopies) {
     type: type,
     numberOfCopies: numberOfCopies,
   };
-  subscribers.push(newSubscription);
+  subscribers.subscriptionArray.push(newSubscription);
 }
 let subscriptionArray = []; // represents an empty array
-addSubscription(subscriptionArray, "Netflix", "4");
-console.log(subscriptionArray);
+addSubscription(subscribers, "Netflix", "4");
+console.log(subscribers);
+
+//Create a funtion that will delete a subscription by type
