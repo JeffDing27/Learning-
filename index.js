@@ -9,6 +9,15 @@ let subscribers = {
   state: "",
   zipCode: "",
   ID: "",
+  subscriptionArray: [
+    //use brackets for array list
+    { type: "Friend", numberOfCopies: "3" },
+    { type: "Liahona", numberOfCopies: "1" },
+    { type: "Ensign", numberOfCopies: "2" },
+    { type: "Seer", numberOfCopies: "1" },
+    { type: "Era", numberOfCopies: "1" },
+    { type: "Contributor", numberOfCopies: "1" },
+  ],
 };
 
 function createSubscriber(firstName, lastName, street1, street2, city, state) {
@@ -107,7 +116,7 @@ function numberOfCity(subscribersArray, city) {
 const sandyCount = numberOfCity(subscribersArray, "Sandy");
 console.log("Number of subscribers in Sandy: " + sandyCount);
 
-//Remove the subscriber in the array that has ID 123.
+//Remove the subscriber in the array that has ID 123 by using filter() method
 function removeID(subscribersArray) {
   return subscribersArray.ID !== "123";
 }
@@ -120,3 +129,17 @@ console.log(subscribersArray.filter(removeID));
 //   }
 // }
 // removeID(subscribersArray, "123");
+
+// Step 3
+
+//Create a function to add a subscription to a subscriber by passing a subscriber and a subscrioption to the function
+function addSubscription(subscribers, type, numberOfCopies) {
+  const newSubscription = {
+    type: type,
+    numberOfCopies: numberOfCopies,
+  };
+  subscribers.push(newSubscription);
+}
+let subscriptionArray = []; // represents an empty array
+addSubscription(subscriptionArray, "Netflix", "4");
+console.log(subscriptionArray);
