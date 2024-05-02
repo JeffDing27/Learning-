@@ -146,6 +146,8 @@ console.log(subscribers);
 
 //Create a funtion that will delete a subscription by type
 function deletSubscription(subscribers, type) {
-  return subscribers.subscriptionArray.type !== type;
+  return subscribers.filter(
+    (subscriptionArray) => subscriptionArray.type !== type
+  );
 }
-console.log(subscribers.subscriptionArray.filter(deletSubscription));
+console.log(deletSubscription(subscribers.subscriptionArray, "Friend"));
