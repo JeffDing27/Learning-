@@ -145,9 +145,13 @@ addSubscription(subscribers, "Netflix", "4");
 console.log(subscribers);
 
 //Create a funtion that will delete a subscription by type
-function deletSubscription(subscribers, type) {
-  return subscribers.filter(
-    (subscriptionArray) => subscriptionArray.type !== type
-  );
+// function deletSubscription(subscribers, type) {
+//   return subscribers.filter((subscriber) => subscriber.type !== type);
+// }
+// console.log(deletSubscription(subscribers.subscriptionArray, "Friend"));
+
+function deletSubscription(subscriber) {
+  return subscriber.type !== "Friend";
 }
-console.log(deletSubscription(subscribers.subscriptionArray, "Friend"));
+console.log(subscribers.subscriptionArray.filter(deletSubscription));
+console.log(subscribers.subscriptionArray);
