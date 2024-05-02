@@ -159,16 +159,16 @@ console.log(subscribers.subscriptionArray);
 //Step 4
 
 //Create a function that returns a promise
-function finsihAfter5Seconds() {
+function finsihAfter5Seconds(ms, max) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve("resolved");
-    }, 5000);
+      resolve(Math.floor(Math.random() * max));
+    }, ms);
   });
 }
 async function asyncLoad() {
   console.log("Loading");
-  const result = await finsihAfter5Seconds();
+  const result = await finsihAfter5Seconds(1000, 100);
   console.log(result);
 }
 asyncLoad();
