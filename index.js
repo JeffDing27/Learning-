@@ -172,3 +172,18 @@ async function asyncLoad() {
   console.log(result);
 }
 asyncLoad();
+
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1));
+}
+
+async function addAgeToSubscriber(subscribers) {
+  const age = getRandomNumber(18, 80);
+  subscribers.age = age;
+
+  const subscriber = {
+    firstName: "Grace",
+    lastName: "Ding",
+  };
+  subscribersArray.push(subscriber);
+}
