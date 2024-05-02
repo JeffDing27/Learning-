@@ -155,3 +155,20 @@ function deletSubscription(subscriber) {
 }
 console.log(subscribers.subscriptionArray.filter(deletSubscription));
 console.log(subscribers.subscriptionArray);
+
+//Step 4
+
+//Create a function that returns a promise
+function finsihAfter5Seconds() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("resolved");
+    }, 5000);
+  });
+}
+async function asyncLoad() {
+  console.log("Loading");
+  const result = await finsihAfter5Seconds();
+  console.log(result);
+}
+asyncLoad();
