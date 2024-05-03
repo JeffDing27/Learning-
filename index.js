@@ -186,13 +186,16 @@ function getRandomNumber(min, max) {
   }, min);
 }
 
-async function addAgeToSubscriber(subscriberArray) {
-  const age = await getRandomNumber(18, 80);
-  const newAge = {
-    age: age,
+async function addAgeToSubscriber(subscriberArray, age) {
+  const existingSubscriber = {
+    firstName: "Jeff",
+    address: "Main St",
+    city: "Taylorsville",
+    ID: "135",
+    age: (age = await getRandomNumber(18, 80)),
   };
   subscriberArray = [];
-  subscribersArray.push(newAge);
+  subscribersArray.push(existingSubscriber);
 }
 
 addAgeToSubscriber(subscribersArray);
