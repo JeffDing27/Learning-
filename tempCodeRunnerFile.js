@@ -1,1 +1,1 @@
-subscriberInfo(subscribersArray);
+asyncLoad();

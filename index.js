@@ -61,7 +61,13 @@ console.log(newState);
 
 let subscribersArray = [
   //use brackets for array list
-  { firstName: "Jeff", address: "Main St", city: "Provo", ID: "145" },
+  {
+    firstName: "Jeff",
+    address: "Main St",
+    city: "Provo",
+    ID: "145",
+    age: "18",
+  },
   { firstName: "John", address: "Main St", city: "Taylorsville", ID: "135" },
   { firstName: "Jason", address: "Main St", city: "West Valley", ID: "456" },
   { firstName: "Sam", address: "Main St", city: "South Jordan", ID: "897" },
@@ -173,17 +179,22 @@ async function asyncLoad() {
 }
 asyncLoad();
 
+//Using async and await write a function to add age to a subscriber and use your promise that gives a random number to set the age value
 function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1));
+  return new Promise((resolve) => {
+    setAge(() => {
+      resolve(Math.floor(Math.random() * max));
+    }, min);
+  });
 }
 
-async function addAgeToSubscriber(subscribers) {
-  const age = getRandomNumber(18, 80);
-  subscribers.age = age;
-
-  const subscriber = {
-    firstName: "Grace",
-    lastName: "Ding",
+async function addAgeToSubscriber(subscribersArray, age) {
+  const newAge = {
+    age: age,
   };
-  subscribersArray.push(subscriber);
+  console.log("Age");
+  const result = await getRandomNumber(18, 80);
+  subscribersArray.push(newAge);
+  console.log(result);
 }
+addAgeToSubscriber(subscribers);
