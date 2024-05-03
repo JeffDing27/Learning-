@@ -197,6 +197,9 @@ async function addAgeToSubscriber(subscriberArray, age) {
   subscriberArray = [];
   subscribersArray.push(existingSubscriber);
 }
+async function main() {
+  await addAgeToSubscriber(subscribersArray);
+  console.log(subscribersArray);
+}
 
-addAgeToSubscriber(subscribersArray);
-console.log(subscribersArray);
+main();
