@@ -66,7 +66,6 @@ let subscribersArray = [
     address: "Main St",
     city: "Provo",
     ID: "145",
-    age: "18",
   },
   { firstName: "John", address: "Main St", city: "Taylorsville", ID: "135" },
   { firstName: "Jason", address: "Main St", city: "West Valley", ID: "456" },
@@ -165,36 +164,36 @@ console.log(subscribers.subscriptionArray);
 //Step 4
 
 //Create a function that returns a promise
-function finsihAfter5Seconds(ms, max) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(Math.floor(Math.random() * max));
-    }, ms);
-  });
-}
-async function asyncLoad() {
-  console.log("Loading");
-  const result = await finsihAfter5Seconds(1000, 100);
-  console.log(result);
-}
-asyncLoad();
+
+// function finsihAfter5Seconds(ms, max) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(Math.floor(Math.random() * max));
+//     }, ms);
+//   });
+// }
+// async function asyncLoad() {
+//   console.log("Loading");
+//   const result = await finsihAfter5Seconds(1000, 100);
+//   console.log(result);
+// }
+// asyncLoad();
 
 //Using async and await write a function to add age to a subscriber and use your promise that gives a random number to set the age value
 function getRandomNumber(min, max) {
   return new Promise((resolve) => {
-    setAge(() => {
-      resolve(Math.floor(Math.random() * max));
-    }, min);
-  });
+    resolve(Math.floor(Math.random() * max));
+  }, min);
 }
 
-async function addAgeToSubscriber(subscribersArray, age) {
+async function addAgeToSubscriber(subscriberArray) {
+  const age = await getRandomNumber(18, 80);
   const newAge = {
     age: age,
   };
-  console.log("Age");
-  const result = await getRandomNumber(18, 80);
+  subscriberArray = [];
   subscribersArray.push(newAge);
-  console.log(result);
 }
-addAgeToSubscriber(subscribers);
+
+addAgeToSubscriber(subscribersArray);
+console.log(subscribersArray);
