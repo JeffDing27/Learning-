@@ -203,3 +203,14 @@ async function main() {
 }
 
 main();
+
+function getAllAge(min, max) {
+  return new Promise((resolve) => {
+    resolve(Math.floor(Math.random() * max));
+  }, min);
+}
+async function getAllSubscribers() {
+  age = await getAllAge(18, 80);
+  const root = subscribersArray.map();
+  subscribersArray.push(root);
+}
