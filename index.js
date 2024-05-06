@@ -211,8 +211,9 @@ function getAllAge(min, max) {
 }
 async function addAgeToAllSubscriber(subscribersArray) {
   for (let i = 0; i < subscribersArray.length; i++) {
+    //iterating over each subscriber
     const existingSubscriber = subscribersArray[i];
-    existingSubscriber.age = await getAllAge(18, 80);
+    existingSubscriber.age = await getAllAge(18, 80); //directly modifying each subscriber by adding the 'age'
   }
 }
 async function main1() {
