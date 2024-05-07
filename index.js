@@ -59,6 +59,12 @@ console.log(newState);
 
 //Step 2
 
+//Learn about arrow functions and use them to create the functions below.
+
+// The parentheses can only be omitted if the function has a single simple parameter
+// If it has multiple parameters, no parameters, or default, destructured, or rest parameters, the parentheses around the parameter list are required.
+// The braces can only be omitted if the function directly returns an expression. If the body has additional lines of processing, the braces are required
+
 let subscribersArray = [
   //use brackets for array list
   {
@@ -77,39 +83,40 @@ let subscribersArray = [
   { firstName: "Adam", address: "Main St", city: "Orem", ID: "490" },
   { firstName: "Levi", address: "Main St", city: "Lehi", ID: "001" },
 ];
+
 //the parameters enclosed in the parentheses represent the input values that the function expects to receive when it is called.
-function subscriberInfo(subscribersArray) {
+const subscriberInfo = (subscribersArray) => {
   for (let i = 0; i < subscribersArray.length; i++) {
     // console.log(subscriber[i]); //allows to access each subscriber object in the array
     const subscriber = subscribersArray[i];
     console.log(`Name: ${subscriber.firstName}`);
     console.log(`Address: ${subscriber.address}`);
   }
-}
+};
 // Call the subscriberInfo function with subscribersArray as argument
 subscriberInfo(subscribersArray);
 
 //add a new subscriber function
-function updateArray(subscribersArray, firstName, address) {
+const updateArray = (subscribersArray, firstName, address) => {
   const newSubscriber = {
     firstName: firstName,
     address: address,
   };
   subscribersArray.push(newSubscriber); //add a new subscriber to the existing array, subscribersArray.
-}
+};
 
 updateArray(subscribersArray, "Rosie", "123 Main"); //
 
 console.log(subscribersArray);
 
 // log out the size of the array function
-function sizeArray(subscribersArray) {
+const sizeArray = (subscribersArray) => {
   console.log("size of the array:", subscribersArray.length);
-}
+};
 sizeArray(subscribersArray);
 
 // Count how many of the subscribers have the city of Sandy
-function numberOfCity(subscribersArray, city) {
+const numberOfCity = (subscribersArray, city) => {
   let count = 0;
   for (let i = 0; i < subscribersArray.length; i++) {
     if (subscribersArray[i].city === city) {
@@ -117,14 +124,13 @@ function numberOfCity(subscribersArray, city) {
     }
   }
   return count;
-}
+};
 const sandyCount = numberOfCity(subscribersArray, "Sandy");
 console.log("Number of subscribers in Sandy: " + sandyCount);
 
 //Remove the subscriber in the array that has ID 123 by using filter() method
-function removeID(subscribersArray) {
-  return subscribersArray.ID !== "123";
-}
+const removeID = (subscribersArray) => subscribersArray.ID !== "123"; // expression body syntax, implied "return"
+
 console.log(subscribersArray.filter(removeID));
 // function removeID(subscribersArray, ID) {
 //   for (let i = 0; i < subscribersArray.length; i++) {
@@ -240,10 +246,21 @@ async function delay(ms) {
 }
 
 async function getMoney(salary) {
+  //actions that we initiate now, but they finish later
   const money = salary;
-  await delay(2000);
+  await delay(2000); //it awaits the resolution of the delay Promise. While waiting for the delay to complete, other code outside of getMoney can continue executing.
   console.log(money);
-  return money;
 }
 let dollars = getMoney(1000);
 console.log(dollars);
+
+const getAgeForAllSubscribers = () => {
+  return subscribersArray.map((subscriber) => subscriber.age);
+};
+let promise1 = Promise.resolve(getAgeForAllSubscribers());
+let promise2 = Promise.resolve("Jeff");
+
+let returnPromise = Promise.all([promise1, promise2]);
+returnPromise.then((values) => {
+  console.log(values);
+});
