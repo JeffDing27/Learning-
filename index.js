@@ -202,7 +202,7 @@ async function main() {
   console.log(subscribersArray);
 }
 
-main();
+// main();
 
 function getAllAge(min, max) {
   return new Promise((resolve) => {
@@ -220,4 +220,30 @@ async function main1() {
   await addAgeToAllSubscriber(subscribersArray);
   console.log(subscribersArray);
 }
-main1();
+// // main1();
+
+function squareArea(width, height) {
+  let caculation = width * height;
+  console.log(caculation);
+  return caculation;
+}
+console.log("Jeff");
+let Area = squareArea(5, 4);
+console.log(Area);
+
+async function delay(ms) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
+}
+
+async function getMoney(salary) {
+  const money = salary;
+  await delay(2000);
+  console.log(money);
+  return money;
+}
+let dollars = getMoney(1000);
+console.log(dollars);

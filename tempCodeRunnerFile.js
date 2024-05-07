@@ -1,1 +1,1 @@
-asyncLoad();
+console.log(Area);
