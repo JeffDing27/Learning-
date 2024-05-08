@@ -72,16 +72,59 @@ let subscribersArray = [
     address: "Main St",
     city: "Provo",
     ID: "145",
+    age: "25",
   },
-  { firstName: "John", address: "Main St", city: "Taylorsville", ID: "135" },
-  { firstName: "Jason", address: "Main St", city: "West Valley", ID: "456" },
-  { firstName: "Sam", address: "Main St", city: "South Jordan", ID: "897" },
-  { firstName: "Clark", address: "Main St", city: "Riverton", ID: "123" },
-  { firstName: "Jackson", address: "Main St", city: "Sandy", ID: "345" },
-  { firstName: "Sarah", address: "Main St", city: "Draper", ID: "998" },
-  { firstName: "Molly", address: "Main St", city: "Highland", ID: "767" },
-  { firstName: "Adam", address: "Main St", city: "Orem", ID: "490" },
-  { firstName: "Levi", address: "Main St", city: "Lehi", ID: "001" },
+  {
+    firstName: "John",
+    address: "Main St",
+    city: "Taylorsville",
+    ID: "135",
+    age: "20",
+  },
+  {
+    firstName: "Jason",
+    address: "Main St",
+    city: "West Valley",
+    ID: "456",
+    age: "21",
+  },
+  {
+    firstName: "Sam",
+    address: "Main St",
+    city: "South Jordan",
+    ID: "897",
+    age: "22",
+  },
+  {
+    firstName: "Clark",
+    address: "Main St",
+    city: "Riverton",
+    ID: "123",
+    age: "23",
+  },
+  {
+    firstName: "Jackson",
+    address: "Main St",
+    city: "Sandy",
+    ID: "345",
+    age: "24",
+  },
+  {
+    firstName: "Sarah",
+    address: "Main St",
+    city: "Draper",
+    ID: "998",
+    age: "25",
+  },
+  {
+    firstName: "Molly",
+    address: "Main St",
+    city: "Highland",
+    ID: "767",
+    age: "26",
+  },
+  { firstName: "Adam", address: "Main St", city: "Orem", ID: "490", age: "27" },
+  { firstName: "Levi", address: "Main St", city: "Lehi", ID: "001", age: "28" },
 ];
 
 //the parameters enclosed in the parentheses represent the input values that the function expects to receive when it is called.
@@ -192,50 +235,105 @@ function getRandomNumber(min, max) {
   }, min);
 }
 
-async function addAgeToSubscriber(subscriberArray, age) {
-  const existingSubscriber = {
-    firstName: "Jeff",
-    address: "Main St",
-    city: "Taylorsville",
-    ID: "135",
-    age: (age = await getRandomNumber(18, 80)),
-  };
-  subscriberArray = [];
-  subscribersArray.push(existingSubscriber);
-}
-async function main() {
-  await addAgeToSubscriber(subscribersArray);
-  console.log(subscribersArray);
-}
+// async function addAgeToSubscriber(subscriberArray, age) {
+//   const existingSubscriber = {
+//     firstName: "Jeff",
+//     address: "Main St",
+//     city: "Taylorsville",
+//     ID: "135",
+//     age: (age = await getRandomNumber(18, 80)),
+//   };
+//   subscriberArray = [];
+//   subscribersArray.push(existingSubscriber);
+// }
+// async function main() {
+//   await addAgeToSubscriber(subscribersArray);
+//   console.log(subscribersArray);
+// }
 
 // main();
 
-function getAllAge(min, max) {
+// function getAllAge(min, max) {
+//   return new Promise((resolve) => {
+//     resolve(Math.floor(Math.random() * max));
+//   }, min);
+// }
+// async function addAgeToAllSubscriber(subscribersArray) {
+//   for (let i = 0; i < subscribersArray.length; i++) {
+//     //iterating over each subscriber
+//     const existingSubscriber = subscribersArray[i];
+//     existingSubscriber.age = await getAllAge(18, 80); //directly modifying each subscriber by adding the 'age'
+//   }
+// }
+// async function main1() {
+//   await addAgeToAllSubscriber(subscribersArray);
+//   console.log(subscribersArray);
+// }
+// main1();
+
+// Step 4- Write a function using Promise.All to get the age for all subscribers in your array of subscribers
+function getRandomAge(min, max) {
   return new Promise((resolve) => {
     resolve(Math.floor(Math.random() * max));
   }, min);
 }
-async function addAgeToAllSubscriber(subscribersArray) {
-  for (let i = 0; i < subscribersArray.length; i++) {
-    //iterating over each subscriber
-    const existingSubscriber = subscribersArray[i];
-    existingSubscriber.age = await getAllAge(18, 80); //directly modifying each subscriber by adding the 'age'
-  }
-}
-async function main1() {
-  await addAgeToAllSubscriber(subscribersArray);
-  console.log(subscribersArray);
-}
-// // main1();
 
-function squareArea(width, height) {
-  let caculation = width * height;
-  console.log(caculation);
-  return caculation;
+async function addAgeToAllSubscriber(subscriber) {
+  return new Promise((resolve, reject) => {
+    const age = getRandomAge(18, 100);
+    if (age) {
+      subscriber.age = age;
+      resolve(age);
+    } else {
+      reject("Age not set");
+    }
+  });
 }
-console.log("Jeff");
-let Area = squareArea(5, 4);
-console.log(Area);
+const agePromises = subscribersArray.map((subscriber) =>
+  addAgeToAllSubscriber(subscriber)
+); // subscriber = elements in the array that I want to iterate
+let returnPromises = Promise.all(agePromises);
+returnPromises.then((value) => {
+  console.log(value);
+});
+
+// function squareArea(width, height) {
+//   let caculation = width * height;
+//   console.log(caculation);
+//   return caculation;
+// }
+// console.log("Jeff");
+// let Area = squareArea(5, 4);
+// console.log(Area);
+
+// async function delay(ms) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {  // setTimeout is a function
+//       resolve();  //first argument, which is a callback function to be executed after the delay
+//     }, ms); // second argument, which specifies the delay in milliseconds
+//   });
+// }
+
+// async function getMoney(salary) {
+//   //actions that we initiate now, but they finish later
+//   const money = salary;
+//   await delay(2000); //it awaits the resolution of the delay Promise. While waiting for the delay to complete, other code outside of getMoney can continue executing.
+//   console.log(money);
+// }
+// let dollars = getMoney(1000);
+// console.log(dollars);
+
+const getAgeForAllSubscribers = () => {
+  return subscribersArray.map((subscriber) => subscriber.age);
+};
+let promise1 = Promise.resolve(getAgeForAllSubscribers()); //Promise.resolve() is a method
+let promise2 = Promise.resolve("Showing ages");
+
+let returnPromise = Promise.all([promise1, promise2]);
+returnPromise.then((values) => {
+  // The then method. It will be executed once 'returnPromise' is resolved.
+  // console.log(values);
+});
 
 async function delay(ms) {
   return new Promise((resolve) => {
@@ -244,23 +342,9 @@ async function delay(ms) {
     }, ms);
   });
 }
-
-async function getMoney(salary) {
-  //actions that we initiate now, but they finish later
-  const money = salary;
-  await delay(2000); //it awaits the resolution of the delay Promise. While waiting for the delay to complete, other code outside of getMoney can continue executing.
-  console.log(money);
+async function f() {
+  console.log("Start");
+  await delay(5000);
+  console.log("End");
 }
-let dollars = getMoney(1000);
-console.log(dollars);
-
-const getAgeForAllSubscribers = () => {
-  return subscribersArray.map((subscriber) => subscriber.age);
-};
-let promise1 = Promise.resolve(getAgeForAllSubscribers());
-let promise2 = Promise.resolve("Jeff");
-
-let returnPromise = Promise.all([promise1, promise2]);
-returnPromise.then((values) => {
-  console.log(values);
-});
+// f();
