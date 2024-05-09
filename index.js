@@ -280,12 +280,12 @@ function getRandomAge(min, max) {
 
 async function addAgeToAllSubscriber(subscriber) {
   return new Promise((resolve, reject) => {
-    const age = getRandomAge(18, 100);
+    const age = getRandomAge(18, 90);
     if (age) {
       subscriber.age = age;
       resolve(age);
     } else {
-      reject("Age not set");
+      reject("No Age");
     }
   });
 }
@@ -348,3 +348,58 @@ async function f() {
   console.log("End");
 }
 // f();
+
+// Practice
+const userLeft = false;
+const userWatchingCatMeme = false;
+
+// function watchTutorialCallback(callback, errorCallback) {
+//   if (userLeft) {
+//     errorCallback({
+//       name: "User Left",
+//       message: ":(",
+//     });
+//   } else if (userWatchingCatMeme) {
+//     errorCallback({
+//       name: "User Watching Cat Meme",
+//       message: "WebDevSimplified < Cat",
+//     });
+//   } else {
+//     callback("Thumbs up and Subscribe");
+//   }
+// }
+// watchTutorialCallback(
+//   (message) => {
+//     console.log("Success: " + message);
+//   },
+//   (error) => {
+//     console.log(error.name + " " + error.message);
+//   }
+// );
+
+//change it to promise
+
+function watchTutorialPromise() {
+  return new Promise((resolve, reject) => {
+    if (userLeft) {
+      reject({
+        name: "User Left",
+        message: ":(",
+      });
+    } else if (userWatchingCatMeme) {
+      reject({
+        name: "User Watching Cat Meme",
+        message: "WebDevSimplified < Cat",
+      });
+    } else {
+      resolve("Thumbs up and Subscribe");
+    }
+  });
+}
+watchTutorialPromise()
+  .then((message) => {
+    console.log("Success: " + message);
+  })
+  .catch((error) => {
+    console.log(error.name + " " + error.message);
+  });
